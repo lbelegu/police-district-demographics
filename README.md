@@ -1,5 +1,7 @@
 # Police District Demographics
 
+[![Deploy Vite App to GitHub Pages](https://github.com/lbelegu/police-district-demographics/actions/workflows/deploy.yml/badge.svg)](https://github.com/lbelegu/police-district-demographics/actions/workflows/deploy.yml)
+
 An open-source web app that visualizes demographic data across police districts in U.S. cities.
 
 Built using **React**, **TailwindCSS**, and **Leaflet**, this project allows users to:
