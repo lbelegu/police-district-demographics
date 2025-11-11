@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import MapView from './MapView.jsx'; 
 
 function Navbar() {
   return (
@@ -13,18 +13,12 @@ function Navbar() {
   );
 }
 
-function MapPlaceholder() {
-  return (
-    <div className="flex items-center justify-center bg-gray-100 text-gray-500 h-[70vh]">
-      <p>Map visualization will go here (Leaflet)</p>
-    </div>
-  );
-}
-
 function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-4 text-center">
-      <p className="text-sm">&copy; {new Date().getFullYear()} Police District Demographics</p>
+      <p className="text-sm">
+        &copy; {new Date().getFullYear()} Police District Demographics
+      </p>
     </footer>
   );
 }
@@ -34,7 +28,7 @@ export default function App() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow">
-        <MapPlaceholder />
+        <MapView />
       </main>
       <Footer />
     </div>
