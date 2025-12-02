@@ -50,10 +50,10 @@ export default function MapView({ city }) {
     const onEachFeature = (feature, layer) => {
         const p = feature.properties;
         const popupContent = `
-            <div class="text-sm">
+            <div class="text-xs">
                 <h3 class="font-bold text-base mb-1">${p.DISTRICT || "District"}</h3>
                 <hr class="my-1 border-gray-300"/>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-1">
+                <div class="grid grid-cols-2 gap-x-0.5 gap-y-1">
                     <span class="text-gray-600">Total Pop:</span>
                     <span class="font-semibold text-right">${p.TOTAL?.toLocaleString() ?? 0}</span>
                     
@@ -73,8 +73,8 @@ export default function MapView({ city }) {
         `;
 
         layer.bindPopup(popupContent, { 
-            minWidth: 250,
-            maxWidth: 400
+            minWidth: 180,
+            maxWidth: 250
         });
     };
 
