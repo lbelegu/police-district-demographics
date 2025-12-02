@@ -68,6 +68,7 @@ export default function App() {
             onChange={handleCityChange}
             className="block w-64 px-4 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md border bg-gray-50"
           >
+            <option value="" disabled>Select a City</option>
             {CITIES.map((city) => (
               <option key={city.id} value={city.id}>
                 {city.name}
