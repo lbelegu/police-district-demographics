@@ -190,6 +190,10 @@ def process_city(state: str, city: str):
     if detected_field != "DISTRICT":
         police_gdf = police_gdf.rename(columns={detected_field: "DISTRICT"})
     print(f" - Detected district field: '{detected_field}' -> using 'DISTRICT'")
+    
+    # merge rows that share the same District name
+    print(f" - Dissolving polygons by DISTRICT to remove duplicates...")
+    police_gdf = police_gdf.dissolve(by="DISTRICT", as_index=False)
 
     # Ensure census GEOID exists
     if "GEOID" not in census_gdf.columns:

@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MapView from './MapView.jsx';
-import { CITIES } from './cities.js';
+import DataTable from './DataTable.jsx';
+import { CITIES } from './cities';
 
 function Navbar() {
   return (
     <nav className="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
-      <h1 className="text-xl font-semibold tracking-wide">Police District Demographics</h1>
+      <h1 className="text-xl font-bold tracking-wide">Police District Demographics</h1>
       <div className="space-x-6 text-sm font-medium">
-        <a href="#" className="hover:text-blue-400">Home</a>
-        <a href="#" className="hover:text-blue-400">About</a>
-        <a href="#" className="hover:text-blue-400">Github</a>
+        <a href="#" className="hover:text-blue-400 transition-colors">Home</a>
+        <a href="#" className="hover:text-blue-400 transition-colors">About</a>
+        <a href="#" className="hover:text-blue-400 transition-colors">Github</a>
       </div>
     </nav>
   );
@@ -17,17 +18,15 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-400 py-6 text-center text-sm">
-      <p className="text-sm">
-        &copy; {new Date().getFullYear()} Police District Demographics. Open Source Project.
-      </p>
+    <footer className="bg-gray-900 text-gray-400 py-6 text-center text-sm mt-auto">
+      <p>&copy; {new Date().getFullYear()} Police District Demographics. Open Source Project.</p>
     </footer>
   );
 }
 
 export default function App() {
-  // state for the currently selected city
   const [currentCity, setCurrentCity] = useState(null);
+  const [geoJsonData, setGeoJsonData] = useState(null);
 
   const handleCityChange = (e) => {
     const cityId = e.target.value;
@@ -35,11 +34,35 @@ export default function App() {
     setCurrentCity(city);
   };
 
+  // fetch logic
+  useEffect(() => {
+    if (!currentCity) {
+      setGeoJsonData(null);
+      return;
+    }
+
+    setGeoJsonData(null);
+
+    const baseUrl = import.meta.env.BASE_URL;
+    const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+    const url = `${cleanBase}results/${currentCity.file}`;
+
+    fetch(url)
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
+      .then((data) => setGeoJsonData(data))
+      .catch((err) => console.error(err));
+
+  }, [currentCity]);
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
 
       <main className="flex-grow flex flex-col items-center py-8 px-4">
+
         <div className="w-full max-w-4xl mb-6 flex items-center justify-between bg-white p-4 rounded-lg shadow-sm border border-gray-200">
           <div>
             <h2 className="text-lg font-semibold text-gray-800">Select a City</h2>
@@ -53,16 +76,19 @@ export default function App() {
           >
             <option value="" disabled>Select a City</option>
             {CITIES.map((city) => (
-              <option key={city.id} value={city.id}>
-                {city.name}
-              </option>
+              <option key={city.id} value={city.id}>{city.name}</option>
             ))}
           </select>
         </div>
 
         <div className="w-full max-w-5xl bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
-          <MapView city={currentCity} />
+          <MapView city={currentCity} data={geoJsonData} />
         </div>
+
+        {currentCity && geoJsonData && (
+          <DataTable data={geoJsonData} city={currentCity} />
+        )}
+
       </main>
       <Footer />
     </div>
