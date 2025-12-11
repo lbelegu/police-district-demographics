@@ -85,7 +85,7 @@ export default function MapView({ city, data }) {
                         </div>
 
                         <div className="flex-grow grid grid-cols-2 sm:grid-cols-4 gap-4 w-full sm:w-auto">
-                            <StatBox label="White" value={selectedDistrict.WHITE} pct={selectedDistrict.WHITE_PCT} color="bg-pink-100 text-blue-800" />
+                            <StatBox label="White" value={selectedDistrict.WHITE} pct={selectedDistrict.WHITE_PCT} color="bg-pink-100 text-pink-800" />
                             <StatBox label="Black" value={selectedDistrict.BLACK} pct={selectedDistrict.BLACK_PCT} color="bg-purple-100 text-purple-800" />
                             <StatBox label="Hispanic" value={selectedDistrict.HISPANIC} pct={selectedDistrict.HISPANIC_PCT} color="bg-orange-100 text-orange-800" />
                             <StatBox label="Asian" value={selectedDistrict.ASIAN} pct={selectedDistrict.ASIAN_PCT} color="bg-green-100 text-green-800" />
