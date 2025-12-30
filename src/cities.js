@@ -61,6 +61,13 @@ export const CITIES = [
         file: "TX/austin.geojson", 
         lat: 30.3039, 
         lng: -97.7544 
-    }
+    },
+    { 
+        id: 'denver-co', 
+        name: "Denver, CO", 
+        file: "CO/denver.geojson",
+        lat: 39.7619, 
+        lng: -104.8811 
+    },
     
 ];
