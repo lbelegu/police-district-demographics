@@ -11,13 +11,13 @@ Built using **React**, **TailwindCSS**, and **Leaflet**, this project allows use
 - Download structured demographic data (CSV) for further analysis.
 
 
-## 🚀 Tech Stack
+## Tech Stack
 - **Frontend:** React + Vite + TailwindCSS
 - **Map Visualization:** Leaflet + React-Leaflet
 - **Data Processing:** Python (Pandas, GeoPandas)
 - **Deployment:** GitHub Pages
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 ```bash
@@ -46,7 +46,7 @@ npm run dev
 ```
 Then open the URL shown in your terminal (usually ```http://localhost:5173```).
 
-## 🗺️ How to add a New City
+## How to add a New City
 Follow these steps to process demographic data for a new city.
 
 ### Step 1: Add Raw Data
@@ -105,5 +105,5 @@ Output: A processed GeoJSON file will be generated in ```public/results/{STATE}/
 ### Step 5: Verify
 Run ```npm run dev``` and select your new city from the dropdown menu to verify the map loads and data populates correctly.
 
-## 📄 License
+## License
 Distributed under the MIT License. See ```LICENSE``` for more information.
