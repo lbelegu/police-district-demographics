@@ -95,7 +95,9 @@ Output: A processed GeoJSON file will be generated in ```public/results/{STATE}/
     name: "Charlotte, NC", 
     file: "NC/charlotte.geojson", // Matches the path in public/results
     lat: 35.2271, 
-    lng: -80.8431 
+    lng: -80.8431,
+    src: "https://data.charlottenc.gov/datasets/charlotte::cmpd-police-divisions-1/about", // source link of geojson 
+    date: "2026-01-03" // yyyy-mm-dd
     },
     ```
 
