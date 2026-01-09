@@ -70,7 +70,7 @@ export default function Home() {
                             className="block w-full md:w-48 px-3 py-2 text-sm border-gray-300 rounded-md border bg-gray-50 focus:ring-blue-500 focus:outline-none focus:border-blue-500"
                         >
                             <option value="" disabled>Select a City</option>
-                            {CITIES.map((city) => (
+                            {[...CITIES].sort((a, b) => a.name.localeCompare(b.name)).map((city) => (
                                 <option key={city.id} value={city.id}>{city.name}</option>
                             ))}
                         </select>
